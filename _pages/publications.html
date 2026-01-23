@@ -4,6 +4,8 @@ title: "Publications"
 permalink: /publications/
 author_profile: true
 ---
+<div id="top-of-page"></div>
+
 {% include base_path %}
 
 <div class="wordwrap">
@@ -28,19 +30,17 @@ author_profile: true
   {% assign category_slug = category[0] %}
   {% assign category_title = category[1].title %}
   
-  {% comment %} 
-    First, get all publications for this category, 
-    then sort them by date, then reverse them.
-  {% endcomment %}
-  {% assign category_posts = site.publications | where: "category", category_slug %}
-  {% assign sorted_posts = category_posts | sort: 'date' | reversed %}
-  
-  {% if sorted_posts.size > 0 %}
+  {% assign all_pubs = site.publications | sort: "date" %}
+
+  {% assign cat_count = site.publications | where: "category", category_slug | size %}
+  {% if cat_count > 0 %}
     <h2 id="{{ category_slug }}">{{ category_title }}</h2>
-    {% for post in sorted_posts %}
-      {% include archive-single.html %}
+    {% for post in all_pubs reversed %}
+      {% if post.category == category_slug %}
+        {% include archive-single.html %}
+      {% endif %}
     {% endfor %}
-    <p align="right"><a href="#{{ page.title | slugify }}">↑ Back to top</a></p>
+    <p align="right"><a href="#top-of-page">↑ Back to top</a></p>
     <hr />
   {% endif %}
 {% endfor %}
