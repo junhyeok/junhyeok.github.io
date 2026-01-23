@@ -27,14 +27,20 @@ author_profile: true
 {% for category in site.publication_category %}
   {% assign category_slug = category[0] %}
   {% assign category_title = category[1].title %}
-  {% assign posts = site.publications | where: "category", category_slug | sort: 'date' | reversed %}
   
-  {% if posts.size > 0 %}
+  {% comment %} 
+    First, get all publications for this category, 
+    then sort them by date, then reverse them.
+  {% endcomment %}
+  {% assign category_posts = site.publications | where: "category", category_slug %}
+  {% assign sorted_posts = category_posts | sort: 'date' | reversed %}
+  
+  {% if sorted_posts.size > 0 %}
     <h2 id="{{ category_slug }}">{{ category_title }}</h2>
-    {% for post in posts %}
+    {% for post in sorted_posts %}
       {% include archive-single.html %}
     {% endfor %}
-    <p align="right"><a href="#{{ page.title | slugify }}"><i class="fas fa-arrow-up"></i> Back to top</a></p>
+    <p align="right"><a href="#{{ page.title | slugify }}">↑ Back to top</a></p>
     <hr />
   {% endif %}
 {% endfor %}
