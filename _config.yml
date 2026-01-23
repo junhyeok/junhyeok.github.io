@@ -9,10 +9,10 @@
 # Basic Site Settings
 locale                   : "en-US"
 site_theme               : "default" # Currently available options are "default", "air"
-title                    : "Visual"
+title                    : "Junhyeok Kim"
 title_separator          : "-"
 name                     : &name "Junhyeok Kim"
-description              : &description "visual"   # Update this with a general description of your site, this is the default if not overridden by a page
+description              : &description "PhD Candidate in HCI at University of Waterloo"   # Update this with a general description of your site, this is the default if not overridden by a page
 url                      : https://junhyeok.github.io # The base hostname & protocol for your site e.g. "https://[your GitHub username].github.io",
                                                            # or if you already have some other page hosted on Github then use "https://[your GitHub username].github.io/[Your Repo Name]"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
@@ -31,6 +31,7 @@ author:
   employer         : "Red Brick University"
   uri              : # URL
   email            : "none@example.org" 
+  cv               : "https://junhyeok.github.io/files/CV-Junhyeok-20260123.pdf" # filename of CV/Resume placed in /files/ for download link in sidebar
 
   # Academic websites
   academia         : # URL
