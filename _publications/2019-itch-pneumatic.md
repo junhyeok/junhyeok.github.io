@@ -1,6 +1,6 @@
 ---
 collection  : publications
-category    : conference
+category    : conferences
 title       : "Applying a Pneumatic Interface to Intervene with Rapid Eating Behaviour"
 permalink   : /publication/2019-pneumatic-eating-interface
 date        : 2019-02-14
