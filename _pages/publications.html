@@ -30,12 +30,12 @@ author_profile: true
   {% assign category_slug = category[0] %}
   {% assign category_title = category[1].title %}
   
-  {% assign all_pubs = site.publications | sort: "date" %}
+  {% assign all_pubs = site.publications | sort: "date" | reverse %}
 
   {% assign cat_count = site.publications | where: "category", category_slug | size %}
   {% if cat_count > 0 %}
     <h2 id="{{ category_slug }}">{{ category_title }}</h2>
-    {% for post in all_pubs reversed %}
+    {% for post in all_pubs %}
       {% if post.category == category_slug %}
         {% include archive-single.html %}
       {% endif %}
