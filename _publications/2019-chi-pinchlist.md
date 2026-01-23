@@ -1,0 +1,11 @@
+---
+collection  : publications
+category    : conferences
+title       : "PinchList: Leveraging Pinch Gestures for Hierarchical List Navigation on Smartphones"
+permalink   : /publication/2019-chi-pinchlist
+date        : 2019-05-04
+venue       : 'CHI 2019'
+paperurl    : '/files/chi-2019-pinchlist.pdf'
+citation    : 'Han, T., Liu, J., Hasan, K., Fan, M., Kim, J., Li, J., Fan, X., Tian, F., Lank, E., & Irani, P. (2019). Pinchlist: Leveraging pinch gestures for hierarchical list navigation on smartphones. Conference on Human Factors in Computing Systems - Proceedings. https://doi.org/10.1145/3290605.3300731'
+---
+Intensive exploration and navigation of hierarchical lists on smartphones can be tedious and time-consuming as it often requires users to frequently switch between multiple views. To overcome this limitation, we present PinchList, a novel interaction design that leverages pinch gestures to support seamless exploration of multi-level list items in hierarchical views. With PinchList, sub-lists are accessed with a pinch-out gesture whereas a pinch-in gesture navigates back to the previous level. Additionally, pinch and flick gestures are used to navigate lists consisting of more than two levels. We conduct a user study to refine the design parameters of PinchList such as a suitable item size, and quantitatively evaluate the target acquisition performance using pinch-in/out gestures in both scrolling and non-scrolling conditions. In a second study, we compare the performance of PinchList in a hierarchal navigation task with two commonly used touch interfaces for list browsing: pagination and expand-and-collapse interfaces. The results reveal that PinchList is significantly faster than other two interfaces in accessing items located in hierarchical list views. Finally, we demonstrate that PinchList enables a host of novel applications in list-based interaction.
