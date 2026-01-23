@@ -1,7 +1,7 @@
 ---
 title       : "Investigating Digital, Tangible, and Paper-Based Room Design at a Small Scale"
 permalink   : https://uwspace.uwaterloo.ca/bitstreams/185c893f-a518-4528-8176-097014673e83/download
-date        : 2025-05
+date        : 2025-05-27
 venue       : 'Graphics Interface 2025'
 paperurl    : '/files/gi2025.pdf'
 citation    : 'Kim, J., & Hancock, M. (2025). Investigating Digital, Tangible, and Paper-Based Room Design at a Small Scale. Graphics Interface 2025 (GI ’25),  https://doi.org/10.1145/3769872.3769879'
