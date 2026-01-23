@@ -7,6 +7,17 @@ author_profile: true
 
 {% include base_path %}
 
-{% for post in site.teaching reversed %}
+I have held various teaching assistantships and grading roles for multiple courses at the University of Manitoba and the University of Waterloo. My experience spans the CS curriculum, from introductory computer science to advanced courses covering algorithms, computer systems, human-computer interaction, and software engineering.
+
+<hr />
+
+
+{% comment %} 
+  Sorting by date first ensures that 'reversed' 
+  always puts the most recent (Waterloo) at the top. 
+{% endcomment %}
+{% assign sorted_teaching = site.teaching | sort: 'date' %}
+
+{% for post in sorted_teaching reversed %}
   {% include archive-single.html %}
 {% endfor %}
