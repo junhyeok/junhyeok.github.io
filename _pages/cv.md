@@ -6,6 +6,12 @@ author_profile: true
 redirect_from:
   - /resume
 ---
+**Email:** junhyeok.kim@uwaterloo.ca
+
+**LinkedIn:** [Junhyeok Kim](https://www.linkedin.com/in/junhyeok-kim/)
+
+[Download Full CV (PDF)](/files/CV-Junhyeok-20260123.pdf){: .btn .btn--info}
+
 
 {% include base_path %}
 
@@ -37,6 +43,6 @@ Teaching
     {% include archive-single-cv.html %}
   {% endfor %}</ul>
   
-Service and leadership
+References
 ======
-* Currently signed in to 43 different slack teams
+* Available upon request
