@@ -11,26 +11,37 @@ author_profile: true
 
 {% include base_path %}
 
-<!-- New style rendering if publication categories are defined -->
-{% if site.publication_category %}
-  {% for category in site.publication_category  %}
-    {% assign title_shown = false %}
-    {% for post in site.publications reversed %}
-      {% if post.category != category[0] %}
-        {% continue %}
-      {% endif %}
-      {% unless title_shown %}
-        <h2>{{ category[1].title }}</h2><hr />
-        {% assign title_shown = true %}
-      {% endunless %}
-      {% include archive-single.html %}
-    {% endfor %}
+
+
+<div class="wordwrap">
+  {% for category in site.publication_category %}
+    {% assign count = site.publications | where: "category", category[0] | size %}
+    {% if count > 0 %}
+      <a href="#{{ category[0] }}"><strong>{{ category[1].title }}</strong> ({{ count }})</a> 
+      {% unless forloop.last %} &nbsp; | &nbsp; {% endunless %}
+    {% endif %}
   {% endfor %}
-{% else %}
-  {% for post in site.publications reversed %}
-    {% include archive-single.html %}
-  {% endfor %}
+</div>
+
+<br>
+
+{% if site.author.googlescholar %}
+  <div class="wordwrap">You can also find my articles on <a href="{{site.author.googlescholar}}">my Google Scholar profile</a>.</div>
 {% endif %}
 
+<hr />
 
-
+{% for category in site.publication_category %}
+  {% assign category_slug = category[0] %}
+  {% assign category_title = category[1].title %}
+  {% assign posts = site.publications | where: "category", category_slug | sort: 'date' | reversed %}
+  
+  {% if posts.size > 0 %}
+    <h2 id="{{ category_slug }}">{{ category_title }}</h2>
+    {% for post in posts %}
+      {% include archive-single.html %}
+    {% endfor %}
+    <p align="right"><a href="#{{ page.title | slugify }}"><i class="fas fa-arrow-up"></i> Back to top</a></p>
+    <hr />
+  {% endif %}
+{% endfor %}
