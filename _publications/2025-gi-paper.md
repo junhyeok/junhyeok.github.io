@@ -1,6 +1,8 @@
 ---
+collection  : publications
+category    : conferences
 title       : "Investigating Digital, Tangible, and Paper-Based Room Design at a Small Scale"
-permalink   : https://uwspace.uwaterloo.ca/bitstreams/185c893f-a518-4528-8176-097014673e83/download
+permalink   : /publication/2025-gi-room-design-small-scale
 date        : 2025-05-27
 venue       : 'Graphics Interface 2025'
 paperurl    : '/files/gi2025.pdf'
