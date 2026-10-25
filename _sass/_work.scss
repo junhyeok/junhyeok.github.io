@@ -11,7 +11,7 @@
 }
 
 .work-card {
-    background: rgba(226, 226, 226, 0.377);
+    background: rgb(226, 226, 226);
     
 
     overflow: hidden;
@@ -24,7 +24,7 @@
 
 .work-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.221);
 }
 
 .work-thumb {
@@ -41,5 +41,5 @@
 
 .work-card p {
   margin: 0 1rem 1rem 1rem;
-  color: #9f9f9f;
+  color: #131313;
 }
