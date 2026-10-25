@@ -3,6 +3,8 @@ title: "ThumbText"
 #date: 2026-10-24
 permalink: /work/thumbtext/
 excerpt: "Designing and evaluating a text-entry technique for ring-sized wearable devices."
+image: /images/work/thumbtext/fig1work.png
+
 featured: true
 published: true
 ---
