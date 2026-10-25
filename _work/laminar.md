@@ -1,7 +1,7 @@
 ---
 title: "Laminar"
-published: true
-featured: true
+published: false
+featured: false
 date: 2026-10-24
 permalink: /work/laminar/
 ---
