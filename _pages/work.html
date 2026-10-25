@@ -4,8 +4,14 @@ title: "Work"
 permalink: /work/
 author_profile: true
 ---
+
 {% assign featured_work = site.work | where: "featured", true %}
 
+<div class="work-grid">
 {% for post in featured_work %}
-  {% include archive-single.html %}
+  <div class="work-card">
+    <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
+    <p>{{ post.excerpt }}</p>
+  </div>
 {% endfor %}
+</div>

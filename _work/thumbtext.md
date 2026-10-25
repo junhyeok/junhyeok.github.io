@@ -1,6 +1,6 @@
 ---
 title: "ThumbText"
-date: 2026-10-24
+#date: 2026-10-24
 permalink: /work/thumbtext/
 excerpt: "Designing and evaluating a text-entry technique for ring-sized wearable devices."
 featured: true
@@ -14,7 +14,6 @@ published: true
 **Role:** Researcher, Interaction Designer, Prototype Developer
 
 ## Overview
-
 How can users efficiently enter text on extremely small wearable devices?
 
 ThumbText explored text entry using a ring-sized touch surface operated by the thumb. The project investigated interaction techniques that could support practical text input despite severe space constraints.

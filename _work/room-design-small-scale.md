@@ -1,6 +1,6 @@
 ---
 title: "Room Design at Small Scale"
-date: 2026-10-24
+#date: 2026-10-24
 permalink: /work/room-design-small-scale/
 excerpt: "Understanding how digital, paper, and tangible miniature tools influence room-planning decisions."
 featured: true
