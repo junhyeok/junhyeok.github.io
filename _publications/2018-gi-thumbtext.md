@@ -2,7 +2,7 @@
 collection  : publications
 category    : conferences
 title       : "ThumbText: Text Entry for Wearable Devices Using a Miniature Ring"
-permalink   : /publication/2025-gi-room-design-small-scale
+permalink   : /publication/2018-gi-thumbtext
 date        : 2018-05-08
 venue       : 'Graphics Interface 2018'
 paperurl    : '/files/gi-2018-thumbtext.pdf'
