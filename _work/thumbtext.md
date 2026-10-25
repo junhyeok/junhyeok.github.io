@@ -16,6 +16,7 @@ published: true
 **Role:** Researcher, Interaction Designer, Prototype Developer
 
 ## Overview
+![thumbtext](/images/work/thumbtext/fig1work.png)
 How can users efficiently enter text on extremely small wearable devices?
 
 ThumbText explored text entry using a ring-sized touch surface operated by the thumb. The project investigated interaction techniques that could support practical text input despite severe space constraints.
