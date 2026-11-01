@@ -34,19 +34,30 @@ export default function CVPage() {
           {profile.summary}
         </p>
 
-        <p className="mt-4 text-zinc-300">
-          {profile.location} <br />
-          <a href={`mailto:${profile.email}`} className="text-blue-400">
-            Email
-          </a>
-          <br />
-          <a href={profile.linkedin} className="text-blue-400" target="_blank" rel="noopener noreferrer">
-            LinkedIn
-          </a>
-          <br />
-          <a href={profile.googleScholar} className="text-blue-400" target="_blank" rel="noopener noreferrer">
-            Google Scholar
-          </a>
+        <p className="mt-4 flex flex-wrap items-center gap-y-1 text-zinc-300">
+          <span>{profile.location}</span>
+
+          <span className="whitespace-nowrap">
+            <span className="mx-2 text-zinc-600">·</span>
+            <a href={`mailto:${profile.email}`} className="text-blue-400">
+              Email 
+            </a>
+          </span>
+          
+          <span className="whitespace-nowrap">
+            <span className="mx-2 text-zinc-600">·</span>
+            <a href={profile.linkedin} className="text-blue-400" target="_blank" rel="noopener noreferrer">
+              LinkedIn 
+            </a>
+          </span>
+          
+          <span className="whitespace-nowrap">
+            <span className="mx-2 text-zinc-600">·</span>
+            <a href={profile.googleScholar} className="text-blue-400" target="_blank" rel="noopener noreferrer">
+              Google Scholar
+            </a>
+          </span>
+
         </p>
       </section>
 
@@ -61,22 +72,25 @@ export default function CVPage() {
                 {edu.institution} · {edu.year}
               </div>
               {edu.thesis && (
-                <div className="text-zinc-600 text-sm italic pb-2">
+                <><div className="text-zinc-500 text-sm italic">
                   {edu.thesis}
                 </div>
+                <div className="text-zinc-600 text-sm pb-2">
+                    {edu.status}
+                  </div></>
               )}
             </li>
           ))}
         </ul>
       </Section>
 
-      <Section title="Research Interests">
+{/*       <Section title="Research Interests">
         <ul className="list-disc pl-5">
           {profile.interests.map((interest) => (
             <li key={interest}>{interest}</li>
           ))}
         </ul>
-      </Section>
+      </Section> */}
 
       <Section title="Experience">
         <div className="space-y-6">
@@ -90,7 +104,7 @@ export default function CVPage() {
                 {exp.organization} • {exp.start}–{exp.end}
               </div>
 
-              <div className="text-zinc-600 text-sm mt-1">
+              <div className="text-zinc-500 text-sm mt-1">
                 {exp.summary}
               </div>
             </div>
@@ -103,7 +117,7 @@ export default function CVPage() {
           {publications.slice(0, 7).map((publication: any) => (
             <div key={publication.slug}>
               <div>{publication.title}</div>
-              <div className="text-zinc-600 text-sm">
+              <div className="text-zinc-500 text-sm">
                 {publication.venue}
               </div>
             </div>
