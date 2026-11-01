@@ -9,6 +9,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <meta name="google-site-verification" content="8crlmrb26yW3LhxletyOlmCPcF-9r-YugV3kMfuHUsY" />
+      </head>
       <body>
         <div className="min-h-screen bg-black text-zinc-300">
           <header className="fixed top-0 left-0 w-full bg-black/60 backdrop-blur-sm z-50">
