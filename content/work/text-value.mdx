@@ -1,0 +1,153 @@
+---
+title: Can Writing Style Identify a Research Venue?
+type: Data Study
+year: 2019
+order: 1
+thumbnail: /images/writing-analysis/writing-analysis3-process.png
+summary: Testing whether readability and writing patterns can distinguish papers from two research conferences.
+---
+
+Research papers contain more than their stated arguments and findings. Sentence length, vocabulary, punctuation, and other writing patterns also leave a measurable trace.
+
+For this project, I asked whether those relatively simple features could distinguish papers published at two research conferences.
+
+I assembled a dataset of 1,666 papers, calculated eleven readability and writing-style measurements for each paper, and compared four machine-learning classifiers.
+
+Several models reported accuracy above 90 percent. However, a major imbalance in the dataset means that the result requires a more cautious interpretation than the headline number suggests.
+
+## Turning papers into data
+
+
+The dataset contained papers published from 2016 through 2018 at two human-computer interaction and graphics conferences:
+
+- 1,593 papers from CHI;
+- 73 papers from Graphics Interface.
+
+Each PDF was converted into plain text. I removed the reference section and cleaned unnecessary whitespace before calculating the features.
+
+![The dataset contained 1,593 CHI papers and 73 Graphics Interface papers.](
+  /images/writing-analysis/writing-analysis2.png
+)
+*The dataset was dominated by CHI papers: 1,593 from CHI and 73 from Graphics Interface.*
+
+
+The resulting dataset was heavily imbalanced: approximately 96 percent of the papers came from CHI. That imbalance became one of the most important limitations of the project.
+
+## Measuring readability
+
+I calculated eight established readability scores for each paper:
+
+
+![A paper was converted into text and represented using readability and writing-style features.](
+  /images/writing-analysis/writing-analysis3-process.png
+)
+*Each paper became a row of eleven numerical measurements.*
+
+
+- Flesch Reading Ease;
+- Flesch–Kincaid Grade Level;
+- Gunning Fog;
+- SMOG;
+- Automated Readability Index;
+- Coleman–Liau Index;
+- Linsear Write;
+- Dale–Chall.
+
+These formulas use combinations of features such as:
+
+- words per sentence;
+- characters per word;
+- syllables per word;
+- frequency of complex words.
+
+Most of the results placed papers from both venues at a college-level reading difficulty. The two collections differed slightly on several measures, but readability alone did not reveal a simple divide between “easy” and “difficult” papers.
+
+The formulas also disagreed with one another. This was expected because each formula defines difficulty differently. Some emphasize sentence length, while others rely more heavily on syllables, characters, or predefined lists of difficult words.
+
+## Measuring writing style
+
+I added three simple stylometric features:
+
+- punctuation frequency;
+- stop-word frequency;
+- unique-word frequency.
+
+Stylometry studies recurring patterns in the way text is written. It is often used for problems such as authorship analysis, genre classification, or comparison among collections of writing.
+
+The features in this project were intentionally simple. They did not examine the meaning of the papers, the novelty of their research, or the quality of their evidence.
+
+## Comparing four classifiers
+
+I trained four machine-learning models:
+
+- decision tree;
+- Gaussian Naive Bayes;
+- support vector classifier;
+- k-nearest neighbours.
+
+I tested the models in three ways.
+
+In the first evaluation, the models were trained on papers from 2016 and tested on papers from 2017 and 2018.
+
+In the second, they were trained on papers from 2016 and 2017 and tested on papers from 2018.
+
+In the third, 30 percent of the complete dataset was selected for training and the remaining 70 percent was used for testing. This process was repeated 100 times.
+
+The support vector classifier produced the highest reported accuracy, reaching approximately 96 percent. Decision trees and k-nearest neighbours also exceeded 90 percent in the reported evaluations. Naive Bayes performed substantially worse and varied more across the randomly sampled tests.
+
+
+![Reported accuracy for four machine-learning classifiers.](
+  /images/writing-analysis/writing-analysis4-comparison.png
+)
+*Three models reported accuracy above 90 percent, but overall accuracy obscured performance on the smaller class.*
+
+
+
+## The important problem with 96 percent
+
+The strongest result was also the easiest to misunderstand.
+
+Because 1,593 of the 1,666 papers came from CHI, a classifier could achieve high overall accuracy by predicting CHI most of the time. Overall accuracy therefore did not provide enough information to determine whether the model had learned meaningful differences between the venues.
+
+A stronger evaluation would have included:
+
+- balanced training and test sets;
+- per-class precision and recall;
+- confusion matrices;
+- F1 scores;
+- repeated stratified cross-validation;
+- comparison against a majority-class baseline;
+- tests on papers from additional venues;
+- analysis of whether formatting templates influenced the result.
+
+The original experiment demonstrated that the two collections were computationally distinguishable under the chosen setup. It did not establish that writing style reliably measures the quality of a scientific paper.
+
+## Style is not quality
+
+The project began from an interest in whether immediately available textual features could supplement slower indicators such as citations.
+
+The analysis changed the question.
+
+Readability and stylometry can describe characteristics of a document. They may also help distinguish collections of documents. But a paper can be easy to read and scientifically weak, or difficult to read and scientifically important.
+
+Conference identity is also not equivalent to quality. Venue-specific formatting, paper length, disciplinary conventions, and topic distributions may all affect the classification.
+
+The more defensible conclusion is narrower:
+
+> Simple textual features captured differences between these two collections, but those differences could not by themselves explain the quality or value of the research.
+
+## What I learned
+
+This project was an early exercise in constructing a complete data-analysis pipeline:
+
+1. assembling a corpus;
+2. converting PDFs into usable text;
+3. defining measurable features;
+4. preprocessing the data;
+5. training several models;
+6. comparing their performance;
+7. interpreting what the metrics did and did not demonstrate.
+
+The most useful lesson was not that one model reached 96 percent accuracy. It was that a persuasive number can still answer the wrong question.
+
+The project strengthened my interest in the relationship between measurement and interpretation: how an abstract concept becomes a computable variable, what is lost in that translation, and how evaluation choices shape the story told by a result.

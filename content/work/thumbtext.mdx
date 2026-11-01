@@ -1,0 +1,164 @@
+---
+title: ThumbText
+type: Interaction Technique
+year: 2018
+thumbnail: /images/thumbtext/TTInUse.png
+summary: A one-handed text-entry method for a touch surface smaller than a fingertip.
+---
+
+Typing on a smartwatch or pair of smart glasses presents an awkward problem: the device may be wearable, but entering text still demands considerable attention, movement, or screen space.
+
+ThumbText explored a different approach. Instead of typing directly on the display, a miniature touchpad was worn like a ring and operated with the thumb.
+
+The challenge was not only making the hardware small. A complete alphabet still had to fit onto a touch surface measuring just 18 × 13 millimetres.
+
+This project developed the ring prototype, studied how precisely people could use the surface, designed a two-step character-selection technique, and compared the resulting system with two existing wearable text-entry methods.
+
+![ThumbText interaction sequence](/images/thumbtext/fig1work.png)
+
+*To type a character, the user first selects a group, slides toward the desired character, and lifts the thumb to confirm.*
+
+## Why move typing away from the display?
+
+Wearable displays create different problems depending on their form.
+
+Typing directly on a smartwatch can cover an already small screen and usually requires both hands. Mid-air input for smart glasses can require larger movements and may be inconvenient in public. Other wearable keyboards depend on a nearby surface or require users to memorize unfamiliar gestures.
+
+A separate input device could avoid some of these limitations, but only if it remained genuinely wearable.
+
+The design therefore began with four requirements:
+
+- small enough to wear rather than hold;
+- operable with one hand;
+- usable without a table or other external surface;
+- applicable across different wearable displays.
+
+A ring-sized touchpad appeared to satisfy these requirements. It could remain attached to one finger while the thumb provided input through small, relatively subtle movements.
+
+## Building the ring
+
+The prototype used a capacitive touch controller mounted on a custom printed circuit board. Its touch-sensitive surface measured 18 × 13 millimetres and reported touch positions at a resolution of 256 × 160 pixels.
+
+The ring communicated with an Arduino and a Unity application. The same input device could then control text entry displayed on a smartwatch or smart glasses.
+
+![ThumbText ring prototype](/images/thumbtext/thumbtext-size.png)
+
+*The prototype placed a miniature touch surface opposite the thumb.*
+
+Hardware alone did not solve the central interaction problem. Twenty-six letters, plus spaces and editing commands, could not be presented as individually selectable buttons on such a small surface.
+
+The first question was therefore more basic:
+
+> How many distinct regions can someone reliably select with a thumb on a ring-sized touchpad?
+
+## Finding a usable layout
+
+I compared three ways of dividing the touch surface:
+
+- horizontal strips;
+- rectangular grids;
+- radial segments.
+
+Each layout was tested at four levels of density, ranging from four to 32 selectable regions. I also compared wearing the touchpad on the index and middle fingers.
+
+![Touch-surface layouts](/images/thumbtext/discretization-layouts.png)
+
+*The first study compared linear, grid, and radial divisions at increasing levels of density.*
+
+Twelve participants selected targets without looking at the ring or their fingers. As the number of regions increased, selections became slower and less accurate. The rectangular grid produced faster and more accurate selections than the radial and linear alternatives.
+
+The study showed that dividing the surface directly into enough regions for an entire alphabet would not work well. A smaller grid was usable, but it could not contain every character in a single step.
+
+The solution was to make each region perform two jobs.
+
+## Selecting a group, then a character
+
+ThumbText divided the touchpad into a 2 × 3 grid.
+
+Each of the six cells initially represented a group of characters. Touching one cell opened that group across the same six-cell layout. The user could then slide toward the desired character and lift the thumb to enter it.
+
+The interaction became one continuous movement:
+
+1. touch a character group;
+2. slide to the desired character;
+3. lift to confirm.
+
+![Two-step selection](/images/thumbtext/interactionTouchLift.png)
+
+*The same six-cell grid is used first for selecting a group and then for selecting a character.*
+
+Using the same layout at both stages avoided requiring the user to switch between two different spatial structures. The slide also allowed someone to correct the initial thumb position before confirming the character.
+
+An intermediate study compared four versions of this two-step design. Participants generally preferred the six-by-six structure, and the touch-slide-lift version provided a way to recover from an imprecise initial touch.
+
+## Designing around the thumb
+
+The touch surface was small, but it was not uniformly difficult to use.
+
+A heat map from the design study showed that some cells were easier to reach reliably than others. The bottom-centre region produced more initial selection errors, while other regions were more accessible to the thumb.
+
+![Thumb accuracy heat map](/images/thumbtext/heatmap.png)
+
+*Touch accuracy variedr layout. More frequently used English letters were placed in cells that participants selected more reliably.
+
+This meant giving up a familiar QWERTY arrangement. The resulting layout required learning, but it aligned the most common characters with the physical capabilities of the thumb.
+
+## Comparing ThumbText with existing techniques
+
+The final studies compared ThumbText with two wearable text-entry techniques adapted to the same ring touchpad:
+
+- SwipeBoard, which uses two directional swipes;
+- H4-Writer, which uses sequences of taps across four regions.
+
+The comparison included a deliberately difficult character set for ThumbText and a more representative set based on English letter frequency.
+
+In the difficult condition, participants reached an average of 8.47 words per minute with ThumbText in the final block, compared with 6.96 for SwipeBoard and 6.19 for H4-Writer.
+
+In the more representative condition, ThumbText reached 11.41 words per minute, while SwipeBoard and H4-Writer reached 6.49 and 6.83 words per minute respectively.
+
+![Thumbtext Comparison](/images/thumbtext/exp4_wpm2.png)
+
+*ThumbText produced higher final-block text-entry rates in both evaluation conditions.*
+
+All three techniques showed learning over repeated blocks. The study was not intended to establish the maximum possible typing speed after long-term use. Instead, the results showed that a technique designed specifically around the ring’s physical constraints performed better than techniques transferred from other devices.
+
+## What the project demonstrated
+
+ThumbText was not intended to replace a full keyboard. It explored how text entry might work during short interactions with wearable devices, particularly when direct touchscreen input or large gestures were inconvenient.
+
+The project produced three connected outcomes:
+
+- a working ring-sized touch input device;
+- evidence about the thumb’s accuracy across a miniature surface;
+- a text-entry technique designed from that evidence.
+
+The design process was as important as the final keyboard. Instead of shrinking an existing interface until it fit, the project began by measuring what the thumb could reliably do and built the interaction around those capabilities.
+
+## Limitations
+
+The evaluations used small participant samples and constrained word sets rather than unrestricted sentences. Participants used the techniques in controlled sessions rather than over weeks of everyday use.
+
+The prototype also did not include predictive text or autocorrection. This made it easier to isolate human input performance, but it meant that the study did not represent a complete production keyboard.
+
+A mature version would need to investigate:
+
+- long-term learning;
+- unrestricted phrase entry;
+- editing and correction commands;
+- predictive text;
+- comfort over extended use;
+- different finger and hand sizes;
+- wireless integration;
+- use while walking or performing another task.
+
+The custom ring was functional research hardware, not a finished wearable product.
+
+## Looking back
+
+ThumbText began with a hardware constraint: fitting input onto a surface smaller than a fingertip.
+
+The more significant design problem was deciding what interaction belonged on that surface. Directly miniaturizing a keyboard did not work. The final technique emerged through a sequence of measurements, alternatives, and design decisions:
+
+> measure the input space, identify its limitations, restructure the task, and place the most important actions where the body performs most reliably.
+
+That process still characterizes how I approach interactive systems. A physical constraint is not only something to engineer around. It can reveal the structure that the interaction itself needs.

@@ -1,41 +1,36 @@
 {
-  "name": "academic-pages",
-  "version": "0.8.1.1",
-  "description": "Academic Pages Mistakes Jekyll theme npm build scripts",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/academicpages/academicpages.github.io"
-  },
-  "keywords": [
-    "jekyll",
-    "theme",
-    "minimal"
-  ],
-  "contributors": [
-    "Michael Rose",
-    "Robert Zupko"
-  ],
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/academicpages/academicpages.github.io/issues"
-  },
-  "homepage": "https://github.com/academicpages/academicpages.github.io",
-  "engines": {
-    "node": ">= 0.10.0"
+  "name": "portfolio-v2",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "cv": "tsx scripts/generate-cv.tsx"
   },
   "dependencies": {
-    "fitvids": "^2.1.1",
-    "jquery": "^3.7.1",
-    "jquery-smooth-scroll": "^2.2.0",
-    "plotly.js-dist-min": "^3.3.0"
+    "@mdx-js/loader": "^3.1.1",
+    "@mdx-js/react": "^3.1.1",
+    "@next/mdx": "^16.4.3",
+    "@react-pdf/renderer": "^4.9.0",
+    "@tailwindcss/typography": "^0.5.20",
+    "gray-matter": "^4.0.3",
+    "lucide-react": "^1.62.0",
+    "next": "16.4.3",
+    "next-mdx-remote": "^6.0.0",
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
   },
   "devDependencies": {
-    "onchange": "^7.1.0",
-    "uglify-js": "^3.17.4"
-  },
-  "scripts": {
-    "uglify": "uglifyjs node_modules/jquery/dist/jquery.min.js node_modules/fitvids/dist/fitvids.min.js node_modules/jquery-smooth-scroll/jquery.smooth-scroll.min.js node_modules/plotly.js-dist-min/plotly.min.js assets/js/plugins/jquery.greedy-navigation.js assets/js/_main.js -c -m -o assets/js/main.min.js",
-    "watch:js": "onchange \"assets/js/**/*.js\" -e \"assets/js/main.min.js\" -- npm run build:js",
-    "build:js": "npm run uglify"
+    "@tailwindcss/turbopack": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.4.3",
+    "tailwindcss": "^4",
+    "tsx": "^4.23.15",
+    "typescript": "^5"
   }
 }

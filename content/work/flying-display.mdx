@@ -1,0 +1,147 @@
+---
+title: Flying Display
+type: Prototype
+year: 2015
+order: 1
+thumbnail: /images/flying-display/flying-display-thumbnail.jpg
+summary: A shared display that repositions itself around a changing group of viewers.
+---
+
+A fixed display rarely gives everyone the same view.
+
+People stand at different distances and angles, move through the space, and join or leave a group. A screen mounted for one configuration may become difficult to see as that configuration changes.
+
+This project explored a speculative alternative: **what if the display could move instead of asking everyone else to adjust?**
+
+I designed a positioning method for a free-moving shared display and built a virtual-reality prototype to see how the display might respond to one person, a group, and people passing through the environment.
+
+## The shared-viewing problem
+
+Large displays are commonly placed at the front of a room or fixed to a wall. This works when the room, seating, and activity are relatively predictable.
+
+A collaborative space is less stable.
+
+Some viewers may stand close to the display, while others approach from the side. One person may need to move around the room. Another person may pass nearby without intending to participate.
+
+This creates several related design questions:
+
+- How far should the display be from each viewer?
+- Which direction should the display face?
+- How should it accommodate multiple viewers?
+- How can it distinguish viewers from people merely passing through?
+- How often should it reposition itself?
+- How can it move without obstructing people?
+
+The project focused primarily on position and orientation.
+
+## A display that reacts to its viewers
+
+The central idea was to treat display placement as a dynamic calculation rather than a permanent architectural decision.
+
+For an individual viewer, I estimated a viewing position based on the size of the display and a target viewing angle. This produced a preferred display location in front of the viewer.
+
+For a group, the problem becomes more complicated. Each person has a different preferred location, and those locations may conflict.
+
+My prototype calculated individual viewing positions and then placed the display near their geometric centre. The display rotated toward the centre of the viewer group, giving more balanced visibility across the group rather than optimizing for one person alone.
+
+## Deciding who is actually watching
+
+Proximity alone does not make someone a viewer.
+
+A person may walk near the display without intending to look at it. If the screen reacted to everyone who entered the room, it would move unnecessarily and become distracting.
+
+I introduced an interaction zone around the display. Entering the zone made someone a potential viewer, but the system also considered body orientation as an indication of viewing intent.
+
+This produced a simple distinction:
+
+- someone inside the zone and oriented toward the display could influence its placement;
+- someone passing through the zone without facing the display would have less or no influence.
+
+The approach was intentionally basic, but it exposed an important interaction problem: a responsive environment must estimate not only where people are, but whether they intend to engage with it.
+
+## Building the simulation
+
+I implemented the prototype in Unity and tested it using a virtual-reality environment.
+
+The simulation included:
+
+- one or more tracked viewers;
+- preferred viewing positions;
+- an interaction zone;
+- viewer-orientation checks;
+- group-position calculations;
+- display translation and rotation;
+- basic collision avoidance.
+
+A top-down diagnostic view showed how the system categorized viewers and recalculated the display position. A first-person view showed what the moving display would look like from inside the environment.
+
+<video
+  controls
+  muted
+  playsInline
+  preload="metadata"
+  poster="/images/flying-display/flying-display-thumbnail.jpg"
+  className="project-video"
+>
+  <source
+    src="/images/flying-display/flying-display-demo-3.mp4"
+    type="video/mp4"
+  />
+</video>
+
+*The Unity simulation recalculates the display position as the viewer configuration changes.*
+
+## From simulation to an immersive demonstration
+
+I also ran the prototype in a projection-based VR environment.
+
+Instead of constructing a physical flying screen, the immersive setup allowed me to examine the basic interaction at full scale: the viewer could move through the simulated space while the virtual display repositioned itself.
+
+<video
+  controls
+  muted
+  playsInline
+  preload="metadata"
+  poster="/images/flying-display/live-demo-thumbnail.jpg"
+  className="project-video"
+>
+  <source
+    src="/images/flying-display/flying-display-live-demo.mp4"
+    type="video/mp4"
+  />
+</video>
+
+*An immersive demonstration of the moving display with one viewer.*
+
+The prototype did not establish whether people would want a display to behave this way. It served as an early design exploration of the rules that such a display might need.
+
+## What remained unresolved
+
+Optimizing the viewing geometry was only part of the problem.
+
+A real system would also need to decide:
+
+- how quickly the display should move;
+- how frequently it should recalculate its position;
+- how much movement viewers would tolerate;
+- whether some viewers should receive greater priority;
+- how the display should negotiate conflicting preferences;
+- how close it could safely move to people and objects;
+- how its size or shape might change;
+- how people could explicitly call, dismiss, or reposition it.
+
+Movement itself would also communicate system behaviour. A display moving directly toward someone might be efficient but disruptive. A display moving too slowly might fail to support the activity in time.
+
+These questions suggest that the display would need an interaction language, not only a positioning algorithm.
+
+## Looking back
+
+This was an early prototype, and its geometry was much simpler than the social situation it attempted to support.
+
+The system treated a group largely as a set of positions and orientations. It did not account for conversation structure, ownership of the content, accessibility, hierarchy, personal space, or disagreement among viewers.
+
+Still, the project introduced a question that continues to interest me:
+
+> When an interactive system can change its own spatial relationship to people, how should it decide where it belongs?
+
+The prototype approached that question through a moving display. My later work examines related problems in virtual reality, where digital objects can change scale, position, and viewpoint even when the physical environment remains fixed.
