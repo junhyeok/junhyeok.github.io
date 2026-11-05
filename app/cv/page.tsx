@@ -64,24 +64,21 @@ export default function CVPage() {
       
 
       <Section title="Education">
-        <ul className="list-disc pl-5">
+        <div className="space-y-4">
           {profile.education.map((edu) => (
-            <li key={edu.degree}>
-              <div>{edu.degree}</div>
+            <div key={edu.degree}>
+              <div className="font-medium">{edu.degree}</div>
               <div className="text-zinc-400">
                 {edu.institution} · {edu.year}
               </div>
               {edu.thesis && (
-                <><div className="text-zinc-500 text-sm italic">
+                <div className="text-zinc-500 text-sm italic mt-0.5">
                   {edu.thesis}
                 </div>
-                <div className="text-zinc-600 text-sm pb-2">
-                    {edu.status}
-                  </div></>
               )}
-            </li>
+            </div>
           ))}
-        </ul>
+        </div>
       </Section>
 
 {/*       <Section title="Research Interests">
@@ -166,7 +163,7 @@ export default function CVPage() {
 
       <Section title="Services">
         <div className="space-y-3">
-          {services.slice(0, 5).map((service: any) => (
+          {services.slice(0, 99).map((service: any) => (
             <div key={service.slug}>
               <div>{service.title}</div>
               <div className="text-zinc-500 text-sm">

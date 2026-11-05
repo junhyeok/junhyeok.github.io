@@ -24,9 +24,8 @@ export const profile = {
     {
       degree: "PhD in Computer Science",
       institution: "University of Waterloo, Canada",
-      year: "Expected 2027",
+      year: "2026",
       thesis: "Tangible World-in-Miniature Interaction in Virtual Reality",
-      status: "final deposit pending",
     },
     {
       degree: "MSc in Computer Science",
