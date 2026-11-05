@@ -15,7 +15,9 @@ export default function Section({
         <div className="flex-1 max-w-full h-px bg-zinc-900" />
       </div>
 
-      {children}
+      <div className="pl-2">
+        {children}
+      </div>
     </section>
   );
 }
