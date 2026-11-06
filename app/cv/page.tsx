@@ -18,6 +18,51 @@ export default function CVPage() {
   const awards = getAwards();
   const talks = getTalks();
 
+  // Recognition entries
+  const recognitions = services.filter(
+    (s: any) => s.recognition
+  );
+
+  // Group services by:
+  // category -> venue -> role -> years
+  const groupedServices = services.reduce(
+    (acc: any, service: any) => {
+      const category = service.category;
+
+      if (!acc[category]) {
+        acc[category] = {};
+      }
+
+      const venueKey =
+        service.venue ??
+        service.venueFull;
+
+      if (!acc[category][venueKey]) {
+        acc[category][venueKey] = {
+          venue: service.venue,
+          venueFull: service.venueFull,
+          publisher: service.publisher,
+          roles: {},
+        };
+      }
+
+      const roleKey = service.role;
+
+      if (
+        !acc[category][venueKey].roles[roleKey]
+      ) {
+        acc[category][venueKey].roles[roleKey] = [];
+      }
+
+      acc[category][venueKey].roles[
+        roleKey
+      ].push(service.year);
+
+      return acc;
+    },
+    {}
+  );
+
 
   return (
     <div className="space-y-12">
@@ -162,17 +207,80 @@ export default function CVPage() {
       </Section>
 
       <Section title="Services">
-        <div className="space-y-3">
-          {services.slice(0, 99).map((service: any) => (
-            <div key={service.slug}>
-              <div>{service.title}</div>
-              <div className="text-zinc-500 text-sm">
-                {service.organization} • {service.year}
+        {recognitions.length > 0 && (
+          <div className="mb-6">
+            <h3 className="text-xs uppercase tracking-widest text-zinc-500 mb-2">
+              Recognition
+            </h3>
+
+            <div className="space-y-2">
+              {recognitions.map((service: any) => (
+                <div key={service.slug}>
+                  <div className="font-semibold">
+                    {service.recognition}
+                  </div>
+
+                  <div className="text-zinc-500 text-sm">
+                    {service.publisher && `${service.publisher} `}
+                    {service.venueFull}
+                    {service.venue && ` (${service.venue})`}
+                    {" • "}
+                    {service.year}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+
+        {Object.entries(groupedServices).map(
+          ([category, venues]: any) => (
+            <div key={category} className="mb-6">
+              <h3 className="text-xs uppercase tracking-widest text-zinc-500 mb-2">
+                {category === "Conference"
+                  ? "Conferences"
+                  : category === "Journal"
+                  ? "Journals"
+                  : category}
+              </h3>
+
+              <div className="space-y-4">
+                {Object.values(venues).map((venue: any) => (
+                  <div
+                    key={venue.venue ?? venue.venueFull}
+                  >
+                    <div>
+                      {venue.publisher && `${venue.publisher} `}
+                      {venue.venueFull}
+                      {venue.venue && ` (${venue.venue})`}
+                    </div>
+
+                    {Object.entries(venue.roles).map(
+                      ([role, years]: any) => (
+                        <div
+                          key={role}
+                          className="ml-3 text-zinc-500 text-sm"
+                        >
+                          {category === "Conference"
+                            ? `${role} • ${years
+                                .sort(
+                                  (a: string, b: string) =>
+                                    Number(a) - Number(b)
+                                )
+                                .join(", ")}`
+                            : role}
+                        </div>
+                      )
+                    )}
+                  </div>
+                ))}
               </div>
             </div>
-          ))}
-        </div>
+          )
+        )}
       </Section>
+
 
       <Section title="Projects">
         <div className="space-y-3">
@@ -180,7 +288,8 @@ export default function CVPage() {
             <div key={project.slug}>
               <div>{project.title}</div>
               <div className="text-zinc-500 text-sm">
-                {project.organization} • {project.year}
+                {project.organization}
+                {project.year}
               </div>
             </div>
           ))}
